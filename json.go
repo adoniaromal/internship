@@ -18,7 +18,7 @@ func main() {
 		fmt.Println("Invalid input! Please enter a number.")
 		return
 	}
-	for i := 0; i <x; i++ {
+	for i := 0; i<x; i++ {
 		var member Fam
 		fmt.Print("Enter name: ")
 		fmt.Scan(&member.Name)
@@ -52,7 +52,12 @@ func main() {
 		fmt.Println("Error reading file:", tt)
 		return
 	}
-
-	fmt.Println("\nJSON data from file:")
-	fmt.Println(string(data))
+	var newmemb []Fam
+	tt=json.Unmarshal(data,&newmemb)
+	if tt!=nil{
+		fmt.Println("Error parsing JSON:",tt)
+		return
+	}
+	fmt.Println("\n Parsed struct data:")
+	fmt.Printf("%+v\n",newmemb)
 }
