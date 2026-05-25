@@ -15,7 +15,7 @@ type Product struct{
 func fetch(url string) (*Product, error) {
 	response,tt:=http.Get(url)
 	if tt!= nil {
-	return nil,tt
+		return nil,tt
 	}
 	defer response.Body.Close()
 	var product Product
